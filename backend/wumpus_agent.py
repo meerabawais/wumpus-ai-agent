@@ -1,9 +1,10 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import random
 
 app = Flask(__name__)
-CORS(app)
+
+CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
+app.config['CORS_HEADERS'] = 'Content-Type'
 # 🌍 GLOBAL STATE
 SIZE = 4
 KB = []
