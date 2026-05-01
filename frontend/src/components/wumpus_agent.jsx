@@ -7,7 +7,7 @@ export default function WumpusAgent() {
 
   // 🚀 INIT WORLD
   async function startGame() {
-    await fetch("http://localhost:5000/init", {
+    await fetch("http://wumpus-ai-agent-production.up.railway.app/init", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ size }),
@@ -25,7 +25,7 @@ export default function WumpusAgent() {
 
   // 🎯 MOVE AGENT
   async function handleClick(index) {
-  const res = await fetch("http://localhost:5000/move", {
+  const res = await fetch("http://wumpus-ai-agent-production.up.railway.app/move", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ index }),
