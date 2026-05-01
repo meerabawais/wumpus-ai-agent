@@ -37,7 +37,7 @@ npm start
 
 ## 🌐 Deployment
 - Frontend: Vercel
-- Backend: Render
+- Backend: Railway
 
 ## 📸 Screenshots
 <img width="863" height="478" alt="image" src="https://github.com/user-attachments/assets/86bc2841-12f5-4293-a773-eb8a06ecfc91" />
