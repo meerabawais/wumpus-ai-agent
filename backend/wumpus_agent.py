@@ -108,8 +108,14 @@ def move():
     data = request.json or {}
     index = data.get("index", 0)
 
-    # 👇 ADD PRINT HERE
     print("MOVE CALLED:", index, GOLD, WUMPUS, PITS)
+
+    # 🛑 SAFETY CHECK (VERY IMPORTANT)
+    if WUMPUS is None or GOLD is None:
+        return jsonify({
+            "status": "ERROR",
+            "message": "Game not initialized. Click Start first."
+        })
 
     x, y = divmod(index, SIZE)
 
@@ -117,7 +123,7 @@ def move():
 
     update_kb(x, y, breeze, stench)
 
-    # 💀 CHECK LOSS
+    # 💀 LOSS
     if index in PITS:
         GAME_OVER = True
         return jsonify({"status": "LOSE", "reason": "Fell into PIT"})
@@ -126,7 +132,7 @@ def move():
         GAME_OVER = True
         return jsonify({"status": "LOSE", "reason": "Eaten by WUMPUS"})
 
-    # 🟡 CHECK WIN
+    # 🟡 WIN
     if index == GOLD:
         GAME_OVER = True
         return jsonify({"status": "WIN", "reason": "Found GOLD"})
