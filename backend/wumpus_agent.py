@@ -103,10 +103,13 @@ def init():
 # 📡 API: MOVE AGENT
 @app.route("/move", methods=["POST"])
 def move():
-    global GAME_OVER
+    global GAME_OVER, GOLD, WUMPUS, PITS
 
-    data = request.json
-    index = data["index"]
+    data = request.json or {}
+    index = data.get("index", 0)
+
+    # 👇 ADD PRINT HERE
+    print("MOVE CALLED:", index, GOLD, WUMPUS, PITS)
 
     x, y = divmod(index, SIZE)
 
